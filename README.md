@@ -95,6 +95,9 @@ hpstatements()
 # ChemmacrosJS
 This project aims to make the functions of the excellent LaTeX package *chemmacros* available for JavaScript and use in HTML. Integration in LiaScript (https://liascript.github.io/) is just as possible as use with vanilla JavaScript.
 
+## Syntax
+
+
 ## Use in Vanilla JavaScript
 
 ## Use in LiaScript
@@ -130,13 +133,28 @@ There are two macros to define chemical equations in LiaScript:
 
 ```
 
-When using the *reaction* macro, no numbering of the equation or alignement will be done while the use of the *reactions* macro the equations will be aligned accordin to the position of & and euqations will be enummerated. 
+When using the *reaction* macro, no numbering of the equation or alignment will be done while the use of the *reactions* macro the equations will be aligned accordin to the position of & and euqations will be enummerated. As for the formulae, if the code inside the reaction macro contains any parenthesis or comma, it has to be enclosed by backticks. 
 
 ### GHS pictograms
+To include GHS pictograms in LiaScript, use the macro *ghspic* with the pic you want to include as argument, separated by whitespaces.
 
+```html
+@ghspic(explos flame flame-O bottle acid skull exclam health aqpol)
+```
 
 ### H and P Statements
+For displaying H and P statements, the mhchem repository is used: https://github.com/mhchem/hpstatements
 
+There are three macros to include the sentences:
+
+```
+@hstatements(290-263-304)
+
+@pstatements(310-305+351+338)
+
+@statementsLangType(<lang>, <H|P>, <numbers>)
+
+```
 
 ## License
 This project is published to the terms of the [CC-BY Attribution 4.0 International Deed](https://creativecommons.org/licenses/by/4.0/).
