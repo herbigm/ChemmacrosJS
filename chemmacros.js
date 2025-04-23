@@ -261,3 +261,40 @@ async function formatStatements (lang, t, text) {
     }
     return f.outerHTML;
 }
+
+function formatPicsLiaScript(text) {
+  const whichOnes = text.split(/\s+/);
+  let ret = "";
+  for (const type of whichOnes) {
+      switch (type) {
+          case "explos":
+              ret += "![explosive](img/ghs/ghs01.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+          case "flame":
+              ret += "![flammable](img/ghs/ghs02.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+          case "flame-O":
+              ret += "![oxidizing](img/ghs/ghs03.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+          case "bottle":
+              ret += "![gas under pressure](img/ghs/ghs04.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+          case "acid":
+              ret += "![corrosive](img/ghs/ghs05.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+          case "skull":
+              ret += "![acutely toxic](img/ghs/ghs06.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+          case "exclam":
+              ret += "![irritating](img/ghs/ghs07.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+          case "health":
+              ret += "![harmful](img/ghs/ghs08.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+          case "aqpol":
+              ret += "![hazadrous for the environment](img/ghs/ghs09.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+      }
+  }
+  return ret;
+}

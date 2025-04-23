@@ -56,45 +56,11 @@ chemmacros()
 @ghspic
 <script run-once modify="false">
 function ghspic() {
-  if (!window.interpretChemmacros) {
+  if (!window.formatPicsLiaScript) {
     setTimeout(ghspic, 100)
     return
   }
-  const text = '@0';
-  const whichOnes = text.split(/\s+/);
-  let ret = "";
-  for (const type of whichOnes) {
-      switch (type) {
-          case "explos":
-              ret += "![explosive](img/ghs/ghs01.svg)<!-- class=\"ghspic\"-->\n";
-              break;
-          case "flame":
-              ret += "![flammable](img/ghs/ghs02.svg)<!-- class=\"ghspic\"-->\n";
-              break;
-          case "flame-O":
-              ret += "![oxidizing](img/ghs/ghs03.svg)<!-- class=\"ghspic\"-->\n";
-              break;
-          case "bottle":
-              ret += "![gas under pressure](img/ghs/ghs04.svg)<!-- class=\"ghspic\"-->\n";
-              break;
-          case "acid":
-              ret += "![corrosive](img/ghs/ghs05.svg)<!-- class=\"ghspic\"-->\n";
-              break;
-          case "skull":
-              ret += "![acutely toxic](img/ghs/ghs06.svg)<!-- class=\"ghspic\"-->\n";
-              break;
-          case "exclam":
-              ret += "![irritating](img/ghs/ghs07.svg)<!-- class=\"ghspic\"-->\n";
-              break;
-          case "health":
-              ret += "![harmful](img/ghs/ghs08.svg)<!-- class=\"ghspic\"-->\n";
-              break;
-          case "aqpol":
-              ret += "![hazadrous for the environment](img/ghs/ghs09.svg)<!-- class=\"ghspic\"-->\n";
-              break;
-      }
-  }
-  send.lia("LIASCRIPT: " + ret);
+  send.lia("LIASCRIPT: " + formatPicsLiaScript('@0'));
 }
 ghspic()
 "LIA: wait"
@@ -130,6 +96,21 @@ hpstatements()
 This project aims to make the functions of the excellent LaTeX package *chemmacros* available for JavaScript and use in HTML. Integration in LiaScript (https://liascript.github.io/) is just as possible as use with vanilla JavaScript.
 
 ## Use in Vanilla JavaScript
+
+## Use in LiaScript
+
+### Loading
+
+
+### Chemical formulae in the Text
+
+### Chemical Eqations
+
+
+### GHS pictograms
+
+
+### H and P Statements
 
 
 ## License
