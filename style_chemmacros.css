@@ -1,0 +1,62 @@
+.chemmacrosSub + .chemmacrosSuperBack {
+  margin-left: -.5em;
+}
+
+sub.chemmacrosSub, sup.chemmacrosSuperBack, sup.chemmacrosSuper {
+  font-size: x-small;
+}
+
+.chemreaction {
+  display: block;
+  text-align: center;
+}
+
+.chemreactions {
+  display: grid;
+}
+
+.eqnc0 {
+  text-align: right;
+  grid-column: 1 / 1;
+}
+
+.eqnc1 {
+  text-align: left;
+  grid-column: 2 / 2;
+}
+
+.eqnc2 {
+  text-align: left;
+  grid-column: 3 / 3;
+}
+
+.eqncounter {
+  text-align: right;
+  grid-column: 10 / 10;
+}
+
+.signalword {
+  text-align: center;
+  font-weight: bold;
+}
+
+.ghspicContainer {
+  text-align: center;
+}
+
+.ghspic {
+  width: 2cm;
+  background-color: white;
+}
+
+.hpstatements {
+  display: grid;
+}
+
+.clpDT {
+  grid-column: 1 / 1;
+}
+
+.clpDD {
+  grid-column: 2 / 2;
+}
