@@ -100,12 +100,37 @@ This project aims to make the functions of the excellent LaTeX package *chemmacr
 ## Use in LiaScript
 
 ### Loading
+Import this file like other LiaScript templates:
 
+```html
+<!--
+import: https://raw.githubusercontent.com/herbigm/ChemmacrosJS/refs/heads/main/README.md
+-->
+```
 
 ### Chemical formulae in the Text
+There is a macro for displaying formulae in HTML:
+
+```html
+@ch(`K3[Fe(CN)6]`)
+```
+
+Be carefull, if the formula contains comma or parenthesis, backticks are required around the formula.
 
 ### Chemical Eqations
+There are two macros to define chemical equations in LiaScript:
 
+```
+@reaction(2 H2 + O2 -> 2 H2O)
+
+@reactions(```
+3 H2 + N2 &-> 2 NH3\\
+4 NH3 + 5 O2 &-> 4 NO + 6 H2O
+```)
+
+```
+
+When using the *reaction* macro, no numbering of the equation or alignement will be done while the use of the *reactions* macro the equations will be aligned accordin to the position of & and euqations will be enummerated. 
 
 ### GHS pictograms
 
