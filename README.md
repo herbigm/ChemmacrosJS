@@ -96,9 +96,79 @@ hpstatements()
 This project aims to make the functions of the excellent LaTeX package *chemmacros* available for JavaScript and use in HTML. Integration in LiaScript (https://liascript.github.io/) is just as possible as use with vanilla JavaScript.
 
 ## Syntax
+The syntax is quite simple, there are only some rules:
 
+* the fist character after ^ will be superscripted
+* all characters in {} after ^ will be superscripted
+* the first character after _ will be subscripted
+* all characters in {} after _ will be subscripted
+* Numbers after brackets, parenthesis and element symbols will be subscripted
+* + and - after brackets, parenthesis and element symbols will be superscripted
+* . and * will be interpreted as &cdot;
+* equations will be splitted at whitespaces and interpreted in parts
+
+### Arrows
+| Code | Result |
+|:---:|:---:|
+| -> | &srarr; |
+| ^ (with whitespaces around) | &uparrow; |
+| v (with whitespaces around) | &downarrow; |
+| <=> | &rlarr; |
+
+### Examples
+```html
+Al2O3
+K4[Fe(CN)6]
+2 H2 + O2 -> 2 H2O
+H2 + I2 <=> 2 HI
+```
 
 ## Use in Vanilla JavaScript
+
+## Loading
+Jut include the script and stylefile in the header of your HTML document.
+
+```html
+<!--
+<link rel="stylesheet" href="style_chemmacros.css">
+<script src="chemmacros.js"></script>
+-->
+```
+
+### Chemical formulae in the Text
+All elements of the class *chemmacros* will be interpreted and replaced by the formula inside.
+
+```html
+<span class="chemmacros">Al2(SO4)3</span>
+```
+
+### Chemical Equations
+All elements of the class *chemreaction* and *chemreactions* will be interpreted and replaced by the formula inside. The second class is for aligned and numbered multiline equations.
+
+```html
+<span class="chemreaction">HCl_{(g)} + NH_{3(g)} -> NH_4Cl_{(s)} </span>
+
+<div class="chemreactions">
+  HCl_{(g)} + NH_{3(g)} &-> NH_4Cl_{(s)}\\
+  2 H2 + O2 &-> 2 H2O
+</div>
+```
+
+When using the *chemreaction* class, no numbering of the equation or alignment will be done while the use of the *chemreactions* class the equations will be aligned accordin to the position of & and euqations will be enummerated.
+
+### GHS pictograms
+Any element of the class *ghspicContainer* will be filled with the pictograms. Add all pictogram identifiers in the data-pics attribute.
+```html
+<span class="ghspicContainer" data-pics="exclam flame"></span>
+```
+
+### H and P Statements
+Any element of the class *clpstatements* will be filled with the statements. Add all statements in the *data-hstatements* and *data-pstatements* attributes. You may add another langugae than englisch setting the *data-lang* attribute. 
+
+```html
+<span class="clpstatements" data-hstatements="302​‐​331​‐​315​‐​319​‐​351​‐​361d​‐​336​‐​372​‐​412" data-pstatements="201​‐​273​‐​301+312+330​‐​302+352​‐​304+340+311​‐​308+313" data-lang="sv"></span>
+
+```
 
 ## Use in LiaScript
 
@@ -120,7 +190,7 @@ There is a macro for displaying formulae in HTML:
 
 Be carefull, if the formula contains comma or parenthesis, backticks are required around the formula.
 
-### Chemical Eqations
+### Chemical Equations
 There are two macros to define chemical equations in LiaScript:
 
 ```
