@@ -103,8 +103,8 @@ The syntax is quite simple, there are only some rules:
 * the first character after _ will be subscripted
 * all characters in {} after _ will be subscripted
 * Numbers after brackets, parenthesis and element symbols will be subscripted
-* + and - after brackets, parenthesis and element symbols will be superscripted
-* . and * will be interpreted as &cdot;
+* &plus; and &minus; after brackets, parenthesis and element symbols will be superscripted
+* . and * will be interpreted as &middot;
 * equations will be splitted at whitespaces and interpreted in parts
 
 ### Arrows
@@ -121,6 +121,7 @@ Al2O3
 K4[Fe(CN)6]
 2 H2 + O2 -> 2 H2O
 H2 + I2 <=> 2 HI
+CuSO4 . 5 H2O
 ```
 
 ## Use in Vanilla JavaScript
