@@ -13,6 +13,7 @@ sub.chemmacrosSub, sup.chemmacrosSuperBack, sup.chemmacrosSuper {
 
 .chemreactions {
   display: grid;
+  grid-template-columns:1fr 1fr 1fr 1fr;
 }
 
 .eqnc0 {
@@ -41,6 +42,10 @@ sub.chemmacrosSub, sup.chemmacrosSuperBack, sup.chemmacrosSuper {
 }
 
 .ghspicContainer {
+  text-align: center;
+}
+
+.ghspics {
   text-align: center;
 }
 
