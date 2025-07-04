@@ -79,68 +79,91 @@ async function INITchemmacros() {
 
     const clp = document.querySelectorAll(".clpstatements");
     for (const f of clp) {
-        f.style.display = "grid";
-
-        let lang = "en";
-        if (f.dataset.lang) {
-            lang = f.dataset.lang;
-        }
-        let res = await fetch("clp/hpstatements-"+lang+"-latest.json");
+        f.classList.add("hpstatements");
+        let res = await fetch("https://raw.githubusercontent.com/mhchem/hpstatements/refs/heads/master/clp/hpstatements-"+lang+"-latest.json");
         let all = await res.json();
-        let value = f.dataset.hstatements;
-        if (value) {
+        let value = text;
+        t = t.trim();
+        if (t == 'H') {
             let H = [];
-            let satzListe = value.matchAll(/((EUH|H|P)?\d{3}[ifdDF]*\s*\+?\s*){1,3}/g);
+            let satzListe = value.matchAll(/((EUH|H|P)?\d{3}[ifdDF]*\s*\+?\s*){1,3}(\[.*?\])?/g);
             for (const satz of satzListe) {
                 let list = satz[0].match(/(\d{3}[ifdDF]*)/g);
                 if (satz[2] == "EUH" || list[0].startsWith("0")) {
-                value = "EUH" + list[0];
+                    value = "EUH" + list[0];
                 } else {
-                value = "H" + list.join("+H");
+                    value = "H" + list.join("+H");
+                }if (satz[3]) {
+                    value += satz[3];
                 }
                 H.push(value);
             }
             H.sort();
             H = [...new Set(H)];
-
-            for (const h of H) {
+            for (let h of H) {
+                let replacement = "";
+                let m = h.match(/\[(.*?)\]/);
+                if (m) {
+                    replacement = m[1].split(/\s*;\s*/gui);
+                    h = h.replace(m[0], "");
+                }
                 let dt = document.createElement("span");
                 dt.classList.add("clpDT");
                 dt.textContent = h;
                 f.appendChild(dt);
                 let dd = document.createElement("span");
                 dd.classList.add("clpDD");
-                dd.textContent = all["statements"]["latest/"+lang+"/" + h];
+                if (replacement == "") {
+                    dd.textContent = all["statements"]["latest/"+lang+"/" + h];
+                } else {
+                    let ctx = all["statements"]["latest/"+lang+"/" + h];
+                    for (const r of replacement) {
+                        ctx = ctx.replace(/<.*?>/ui, r);
+                    }
+                    dd.textContent = ctx;
+                }
                 f.appendChild(dd);
             }
-        }
-        value = null;
-        value = f.dataset.pstatements;
-        if (value) {
+        } else if (t == "P") {
             let P = [];
-            let satzListe = value.matchAll(/((EUH|H|P)?\d{3}[ifdDF]*\s*\+?\s*){1,3}/g);
+            let satzListe = value.matchAll(/((?:EUH|H|P)?\d{3}[ifdDF]*\s*\+?\s*){1,3}(\[.*?\])?/g);
             for (const satz of satzListe) {
                 let list = satz[0].match(/(\d{3}[ifdDF]*)/g);
-                if (satz[2] == "EUH" || list[0].startsWith("0")) {
-                value = "EUH" + list[0];
-                } else {
                 value = "P" + list.join("+P");
+                if (satz[2]) {
+                    value += satz[2];
                 }
                 P.push(value);
             }
             P.sort();
             P = [...new Set(P)];
 
-            for (const p of P) {
+            for (let p of P) {
+                let replacement = "";
+                let m = p.match(/\[(.*?)\]/);
+                if (m) {
+                    replacement = m[1].split(/\s*;\s*/gui);
+                    p = p.replace(m[0], "");
+                }
                 let dt = document.createElement("span");
                 dt.classList.add("clpDT");
                 dt.textContent = p;
                 f.appendChild(dt);
                 let dd = document.createElement("span");
                 dd.classList.add("clpDD");
-                dd.textContent = all["statements"]["latest/"+lang+"/" + p];
+                if (replacement == "") {
+                    dd.textContent = all["statements"]["latest/"+lang+"/" + p];
+                } else {
+                    let ctx = all["statements"]["latest/"+lang+"/" + p];
+                    for (const r of replacement) {
+                        ctx = ctx.replace("…", r);
+                    }
+                    dd.textContent = ctx;
+                }
                 f.appendChild(dd);
             }
+        } else {
+            console.log("Hä!?!");
         }
     }
 }
