@@ -56,6 +56,7 @@ sub.chemmacrosSub, sup.chemmacrosSuperBack, sup.chemmacrosSuper {
 
 .hpstatements {
   display: grid;
+  grid-template-columns: minmax(2em, 8em) auto;
 }
 
 .clpDT {
