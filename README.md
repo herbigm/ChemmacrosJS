@@ -171,6 +171,13 @@ Any element of the class *clpstatements* will be filled with the statements. Add
 
 ```
 
+You can fill gaps in the statements by adding the filling in brackets after the statement. If there are multiple gaps, you can split them using ";". It is possible to simply remove gaps by passing nothing in the brackets:
+
+```html
+<span class="clpstatements" data-hstatements="370[Liver;]"></span>
+
+```
+
 ## Use in LiaScript
 
 ### Loading
@@ -225,6 +232,12 @@ There are three macros to include the sentences:
 
 @statementsLangType(<lang>, <H|P>, <numbers>)
 
+```
+
+You can fill gaps in the statements by adding the filling in brackets after the statement. If there are multiple gaps, you can split them using ";". It is possible to simply remove gaps by passing nothing in the brackets:
+
+```
+@hstatements(370[Liver;])
 ```
 
 ## License
