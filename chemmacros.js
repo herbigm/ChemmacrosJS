@@ -173,7 +173,7 @@ function interpretChemmacros(text) {
     for (let i = 0; i < parts.length; i++) {
         parts[i] = parts[i].trim();
         // replace . and * as middle dot
-        parts[i] = parts[i].replaceAll(/\s+[\.\*]\s+/gui, "&middot;");
+        parts[i] = parts[i].replaceAll(/\s*[\.\*]\s*/gui, "&middot;");
         // superscript with ^
         parts[i] = parts[i].replaceAll(/\s*\^\{([\d\+\-\S]+)\}\s*/gui, "<sup class=\"chemmacrosSuper\">$1</sup>");
         parts[i] = parts[i].replaceAll(/\s*\^([\d\+\-\S]{1})\s*/gui, "<sup class=\"chemmacrosSuper\">$1</sup>");
@@ -186,7 +186,7 @@ function interpretChemmacros(text) {
         parts[i] = parts[i].replaceAll(/_([^\{\}]{1})/gui, "<sub class=\"chemmacrosSub\">$1</sub>");
 
         //arrows
-        parts[i] = parts[i].replaceAll(/(\\rightarrow|->)/gui, "&srarr;");
+        parts[i] = parts[i].replaceAll(/(\\rightarrow|->)/gui, "&xrarr;");
         parts[i] = parts[i].replaceAll(/(\\uparrow|\^)/gui, "&uparrow;");
         parts[i] = parts[i].replaceAll(/(\\downarrow|v)/gui, "&downarrow;");
         parts[i] = parts[i].replaceAll(/(\\leftrightarrows|<=>)/gui, "&rlarr;");
