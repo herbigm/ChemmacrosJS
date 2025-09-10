@@ -6,6 +6,16 @@ sub.chemmacrosSub, sup.chemmacrosSuperBack, sup.chemmacrosSuper {
   font-size: x-small;
 }
 
+sub.chemmacrosSub {
+  position: relative;
+  top: .5em;
+}
+
+sup.chemmacrosSuperBack, sup.chemmacrosSuper {
+  position. relative;
+  top: -0.75em;
+}
+
 .chemreaction {
   display: block;
   text-align: center;
