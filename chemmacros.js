@@ -38,39 +38,39 @@ async function INITchemmacros() {
             pic.classList.add("ghspic");
             switch (type) {
                 case "explos":
-                    pic.src = "img/ghs/ghs01.svg";
+                    pic.src = "https://upload.wikimedia.org/wikipedia/commons/4/4a/GHS-pictogram-explos.svg";
                     f.appendChild(pic);
                     break;
                 case "flame":
-                    pic.src = "img/ghs/ghs02.svg";
+                    pic.src = "https://upload.wikimedia.org/wikipedia/commons/6/6d/GHS-pictogram-flamme.svg";
                     f.appendChild(pic);
                     break;
                 case "flame-O":
-                    pic.src = "img/ghs/ghs03.svg";
+                    pic.src = "https://upload.wikimedia.org/wikipedia/commons/e/e5/GHS-pictogram-rondflam.svg";
                     f.appendChild(pic);
                     break;
                 case "bottle":
-                    pic.src = "img/ghs/ghs04.svg";
+                    pic.src = "https://upload.wikimedia.org/wikipedia/commons/6/6a/GHS-pictogram-bottle.svg";
                     f.appendChild(pic);
                     break;
                 case "acid":
-                    pic.src = "img/ghs/ghs05.svg";
+                    pic.src = "https://upload.wikimedia.org/wikipedia/commons/a/a1/GHS-pictogram-acid.svg";
                     f.appendChild(pic);
                     break;
                 case "skull":
-                    pic.src = "img/ghs/ghs06.svg";
+                    pic.src = "https://upload.wikimedia.org/wikipedia/commons/5/58/GHS-pictogram-skull.svg";
                     f.appendChild(pic);
                     break;
                 case "exclam":
-                    pic.src = "img/ghs/ghs07.svg";
+                    pic.src = "https://upload.wikimedia.org/wikipedia/commons/c/c3/GHS-pictogram-exclam.svg";
                     f.appendChild(pic);
                     break;
                 case "health":
-                    pic.src = "img/ghs/ghs08.svg";
+                    pic.src = "https://upload.wikimedia.org/wikipedia/commons/2/21/GHS-pictogram-silhouette.svg";
                     f.appendChild(pic);
                     break;
                 case "aqpol":
-                    pic.src = "img/ghs/ghs09.svg";
+                    pic.src = "https://upload.wikimedia.org/wikipedia/commons/b/b9/GHS-pictogram-pollu.svg";
                     f.appendChild(pic);
                     break;
             }
@@ -174,6 +174,7 @@ function interpretChemmacros(text) {
         parts[i] = parts[i].trim();
         // replace . and * as middle dot
         parts[i] = parts[i].replaceAll(/\s*[\.\*]\s*/gui, "&middot;");
+        parts[i] = parts[i].replaceAll(/(\d)&middot;(\d)/gui, "$1.$2");
         // superscript with ^
         parts[i] = parts[i].replaceAll(/\s*\^\{([\d\+\-\S]+)\}\s*/gui, "<sup class=\"chemmacrosSuper\">$1</sup>");
         parts[i] = parts[i].replaceAll(/\s*\^([\d\+\-\S]{1})\s*/gui, "<sup class=\"chemmacrosSuper\">$1</sup>");

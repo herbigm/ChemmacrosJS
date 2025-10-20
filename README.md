@@ -56,11 +56,45 @@ chemmacros()
 @ghspic
 <script run-once modify="false">
 function ghspic() {
-  if (!window.formatPicsLiaScript) {
+  if (!window.interpretChemmacros) {
     setTimeout(ghspic, 100)
     return
   }
-  send.lia("LIASCRIPT: " + formatPicsLiaScript('@0'));
+  const text = '@0';
+  const whichOnes = text.split(/\s+/);
+  let ret = "";
+  for (const type of whichOnes) {
+      switch (type) {
+          case "explos":
+              ret += "![explosive](https://upload.wikimedia.org/wikipedia/commons/4/4a/GHS-pictogram-explos.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+          case "flame":
+              ret += "![flammable](https://upload.wikimedia.org/wikipedia/commons/6/6d/GHS-pictogram-flamme.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+          case "flame-O":
+              ret += "![oxidizing](https://upload.wikimedia.org/wikipedia/commons/e/e5/GHS-pictogram-rondflam.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+          case "bottle":
+              ret += "![gas under pressure](https://upload.wikimedia.org/wikipedia/commons/6/6a/GHS-pictogram-bottle.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+          case "acid":
+              ret += "![corrosive](https://upload.wikimedia.org/wikipedia/commons/a/a1/GHS-pictogram-acid.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+          case "skull":
+              ret += "![acutely toxic](https://upload.wikimedia.org/wikipedia/commons/5/58/GHS-pictogram-skull.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+          case "exclam":
+              ret += "![irritating](https://upload.wikimedia.org/wikipedia/commons/c/c3/GHS-pictogram-exclam.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+          case "health":
+              ret += "![harmful](https://upload.wikimedia.org/wikipedia/commons/2/21/GHS-pictogram-silhouette.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+          case "aqpol":
+              ret += "![hazadrous for the environment](https://upload.wikimedia.org/wikipedia/commons/b/b9/GHS-pictogram-pollu.svg)<!-- class=\"ghspic\"-->\n";
+              break;
+      }
+  }
+  send.lia("LIASCRIPT: " + ret);
 }
 ghspic()
 "LIA: wait"
