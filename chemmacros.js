@@ -216,7 +216,10 @@ function interpretChemmacros(text) {
         return mathMode[counter++];
     });
 
-    return retText;
+    let s = document.createElement("span");
+    s.innerHTML = retText;
+
+    return s.outerHTML;
 }
 
 // equations
