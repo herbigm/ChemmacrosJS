@@ -3,7 +3,7 @@
 author:  Dr. Marcus Herbig
 email:   marcus.herbig@chemie.tu-freiberg.de
 
-version: 0.1
+version: 0.5
 
 comment: This is a plugin for including chemical fomulas into LiaScript. The syntax is similar to the LaTeX package chemmacros.
 
@@ -32,7 +32,7 @@ function chemmacros() {
     setTimeout(chemmacros, 100)
     return
   }
-    send.lia("HTML: <div class=\"chemreaction\">" +interpretChemmacros('@0') + "</div>")
+    send.lia("LIASCRIPT: <div class=\"chemreaction\">" +interpretChemmacros('@0') + "</div>")
 }
 chemmacros()
 "LIA: wait"
@@ -46,7 +46,7 @@ function chemmacros() {
     setTimeout(chemmacros, 100)
     return
   }
-    send.lia("HTML: " +formatReactions(`@'0`))
+    send.lia("LIASCRIPT: " +formatReactions(`@'0`))
 }
 chemmacros()
 "LIA: wait"
@@ -69,28 +69,28 @@ function ghspic() {
               ret += "![explosive](https://upload.wikimedia.org/wikipedia/commons/4/4a/GHS-pictogram-explos.svg)<!-- class=\"ghspic\"-->\n";
               break;
           case "flame":
-              ret += "![flammable](https://upload.wikimedia.org/wikipedia/commons/6/6d/GHS-pictogram-flamme.svg)<!-- class=\"ghspic\"-->\n";
+              ret += "<img src=\"https://upload.wikimedia.org/wikipedia/commons/6/6d/GHS-pictogram-flamme.svg\" alt=\"flammable\" class=\"ghspic\">\n";
               break;
           case "flame-O":
-              ret += "![oxidizing](https://upload.wikimedia.org/wikipedia/commons/e/e5/GHS-pictogram-rondflam.svg)<!-- class=\"ghspic\"-->\n";
+              ret += "<img src=\"https://upload.wikimedia.org/wikipedia/commons/e/e5/GHS-pictogram-rondflam.svg\" alt=\"oxidizing\" class=\"ghspic\">\n";
               break;
           case "bottle":
-              ret += "![gas under pressure](https://upload.wikimedia.org/wikipedia/commons/6/6a/GHS-pictogram-bottle.svg)<!-- class=\"ghspic\"-->\n";
+              ret += "<img src=\"https://upload.wikimedia.org/wikipedia/commons/6/6a/GHS-pictogram-bottle.svg\" alt=\"gas under pressure\" class=\"ghspic\">\n";
               break;
           case "acid":
-              ret += "![corrosive](https://upload.wikimedia.org/wikipedia/commons/a/a1/GHS-pictogram-acid.svg)<!-- class=\"ghspic\"-->\n";
+              ret += "<img src=\"https://upload.wikimedia.org/wikipedia/commons/a/a1/GHS-pictogram-acid.svg\" alt=\"corrosive\" class=\"ghspic\">\n";
               break;
           case "skull":
-              ret += "![acutely toxic](https://upload.wikimedia.org/wikipedia/commons/5/58/GHS-pictogram-skull.svg)<!-- class=\"ghspic\"-->\n";
+              ret += "<img src=\"https://upload.wikimedia.org/wikipedia/commons/5/58/GHS-pictogram-skull.svg\" alt=\"acutely toxic\" class=\"ghspic\">\n";
               break;
           case "exclam":
-              ret += "![irritating](https://upload.wikimedia.org/wikipedia/commons/c/c3/GHS-pictogram-exclam.svg)<!-- class=\"ghspic\"-->\n";
+              ret += "<img src=\"https://upload.wikimedia.org/wikipedia/commons/c/c3/GHS-pictogram-exclam.svg\" alt=\"irritating\" class=\"ghspic\"-->\n";
               break;
           case "health":
-              ret += "![harmful](https://upload.wikimedia.org/wikipedia/commons/2/21/GHS-pictogram-silhouette.svg)<!-- class=\"ghspic\"-->\n";
+              ret += "<img src=\"https://upload.wikimedia.org/wikipedia/commons/2/21/GHS-pictogram-silhouette.svg\" alt=\"harmful\" class=\"ghspic\">\n";
               break;
           case "aqpol":
-              ret += "![hazadrous for the environment](https://upload.wikimedia.org/wikipedia/commons/b/b9/GHS-pictogram-pollu.svg)<!-- class=\"ghspic\"-->\n";
+              ret += "<img src=\"https://upload.wikimedia.org/wikipedia/commons/b/b9/GHS-pictogram-pollu.svg\" alt=\"hazadrous for the environment\" class=\"ghspic\">\n";
               break;
       }
   }

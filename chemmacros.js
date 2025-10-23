@@ -169,7 +169,20 @@ async function INITchemmacros() {
 }
 
 function interpretChemmacros(text) {
-    let parts = text.split(/\s+/gi);
+    let mathMode = [];
+    const regex = /\$.+\$/gi;
+    let match;
+    while ((match = regex.exec(text)) !== null) {
+        mathMode.push(match[0]);
+    }
+
+    // Replace each match with a counter
+    let counter = 1;
+    let newText = text.replace(regex, () => {
+        return `#${counter++}`;
+    });
+
+    let parts = newText.split(/\s+/gi);
     for (let i = 0; i < parts.length; i++) {
         parts[i] = parts[i].trim();
         // replace . and * as middle dot
@@ -196,7 +209,14 @@ function interpretChemmacros(text) {
         parts[i] = parts[i].replaceAll("</sub><sup class=\"chemmacrosSuper\">", "</sub><sup class=\"chemmacrosSuperBack\">");
     }
     text = parts.join(" ");
-    return text;
+
+    // Replace each match with a counter
+    counter = 0;
+    let retText = text.replace(/#\d/g, () => {
+        return mathMode[counter++];
+    });
+
+    return retText;
 }
 
 // equations
