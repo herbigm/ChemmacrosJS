@@ -84,7 +84,7 @@ function ghspic() {
               ret += "<img src=\"https://upload.wikimedia.org/wikipedia/commons/5/58/GHS-pictogram-skull.svg\" alt=\"acutely toxic\" class=\"ghspic\">\n";
               break;
           case "exclam":
-              ret += "<img src=\"https://upload.wikimedia.org/wikipedia/commons/c/c3/GHS-pictogram-exclam.svg\" alt=\"irritating\" class=\"ghspic\"-->\n";
+              ret += "<img src=\"https://upload.wikimedia.org/wikipedia/commons/c/c3/GHS-pictogram-exclam.svg\" alt=\"irritating\" class=\"ghspic\">\n";
               break;
           case "health":
               ret += "<img src=\"https://upload.wikimedia.org/wikipedia/commons/2/21/GHS-pictogram-silhouette.svg\" alt=\"harmful\" class=\"ghspic\">\n";
