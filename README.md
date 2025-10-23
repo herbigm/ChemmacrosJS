@@ -66,7 +66,7 @@ function ghspic() {
   for (const type of whichOnes) {
       switch (type) {
           case "explos":
-              ret += "![explosive](https://upload.wikimedia.org/wikipedia/commons/4/4a/GHS-pictogram-explos.svg)<!-- class=\"ghspic\"-->\n";
+              ret += "<img src=\"https://upload.wikimedia.org/wikipedia/commons/4/4a/GHS-pictogram-explos.svg\" alt=\"explosive\" class=\"ghspic\">\n";
               break;
           case "flame":
               ret += "<img src=\"https://upload.wikimedia.org/wikipedia/commons/6/6d/GHS-pictogram-flamme.svg\" alt=\"flammable\" class=\"ghspic\">\n";
