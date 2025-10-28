@@ -202,7 +202,7 @@ function interpretChemmacros(text) {
         //arrows
         parts[i] = parts[i].replaceAll(/(\\rightarrow|->)/gui, "&xrarr;");
         parts[i] = parts[i].replaceAll(/(\\uparrow|\^)/gui, "&uparrow;");
-        parts[i] = parts[i].replaceAll(/(\\downarrow|v)/gui, "&downarrow;");
+        parts[i] = parts[i].replaceAll(/(\\downarrow|v)/gu, "&downarrow;");
         parts[i] = parts[i].replaceAll(/(\\leftrightarrows|<=>)/gui, "&rlarr;");
         // clean up
         parts[i] = parts[i].replaceAll("</sup><sup class=\"chemmacrosSuper\">", "");
